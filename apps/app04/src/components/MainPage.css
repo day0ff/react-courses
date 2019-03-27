@@ -1,0 +1,20 @@
+img{
+    border-radius: 10px;
+}
+
+button{
+    margin: 5px;
+    border: 2px solid #3395bd;
+    border-radius: 5px;
+    background-color: #282c34;
+    padding: 0.5em;
+    color: #d7dce8;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition:color 0.2s, background-color 0.2s;
+}
+button:hover{
+    cursor: pointer;
+    color: #282c34;
+    background-color: white;
+}

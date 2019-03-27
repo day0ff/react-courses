@@ -1,0 +1,109 @@
+.Fruits ol {
+    counter-reset: li;
+    margin: 0 auto;
+    padding: 0;
+    width: 200px;
+    list-style: none;
+}
+
+.Fruits li {
+    position: relative;
+    display: block;
+    line-height: 2em;
+    margin: 1em 0;
+    padding: 0 1.4em;
+    background: #282c34;
+    height: 2em;
+    text-align: left;
+}
+
+.Fruits li:hover {
+    color: #282c34;
+    background-color: white;
+}
+
+.Fruits li span {
+    text-align: left;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.Fruits li span.cost {
+    float: right;
+}
+
+.Fruits li:before, .Fruits li span.delete {
+    position: absolute;
+    top: 50%;
+    margin-top: -1.4em;
+    background: #282c34;
+    height: 2em;
+    width: 2em;
+    border: .4em solid #525761;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    color: white;
+}
+
+.Fruits li:before {
+    content: counter(li);
+    counter-increment: li;
+    left: -2em;
+    line-height: 2em;
+}
+
+.Fruits li span.delete {
+    display: block;
+    position: absolute;
+    height: 2.8em;
+    width: 2.8em;
+    right: -2em;
+    line-height: 1.8em;
+}
+
+.Fruits li span.delete:hover {
+    cursor: pointer;
+    color: #282c34;
+    background-color: white;
+}
+
+.Fruits form {
+    margin: 0 auto;
+    width: 380px;
+}
+
+.Fruits form label{
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    border: 2px solid #3395bd;
+    border-radius: 5px;
+    padding: 10px  15px 10px 10px;
+    font-size: 20px;
+    background-color: #282c34;
+    height: 44px;
+    line-height: 20px;
+    clear: left;
+    top:1px;
+    left:5px;
+}
+
+.Fruits form input{
+    position: relative;
+    border: 2px solid #3395bd;
+    border-radius: 0 5px 5px 0;
+    background-color: #525761;
+    margin: 5px 0;
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+    width: 200px;
+    height: 44px;
+}
+
+.Fruits form button{
+    position: absolute;
+    font-size: 20px;
+    height: 44px;
+}
