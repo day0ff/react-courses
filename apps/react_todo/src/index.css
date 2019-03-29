@@ -56,6 +56,7 @@ header input[type="image"] {
     position: relative;
     top: 2px;
     left: 35px;
+    cursor: initial;
 }
 
 nav {
@@ -167,6 +168,7 @@ article ul {
 }
 
 article ul li {
+    margin:17px 0 0;
     position: relative;
     display: block;
     width: 728px;
