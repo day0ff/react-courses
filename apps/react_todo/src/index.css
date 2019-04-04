@@ -101,7 +101,7 @@ section form {
     text-align: right;
 }
 
-section form label {
+section form span {
     font-size: 12px;
     line-height: normal;
     float: left;

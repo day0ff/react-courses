@@ -1,34 +1,34 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import Task from './Task';
 
-
 class Tasks extends PureComponent {
-    constructor({tasks, deleteTask, updateTask}) {
-        super();
-        this.state = {tasks, deleteTask, updateTask};
-    }
 
-    componentWillReceiveProps({tasks}) {
-        this.setState({tasks});
-    }
-
-    render() {
-        return (
-            <article>
-                <ul>
-                    {this.state.tasks.map(task => (
-                        <Task
-                            key={task.id}
-                            task={task}
-                            deleteTask={this.state.deleteTask}
-                            updateTask={this.state.updateTask}
-                        />
-                    ))}
-                </ul>
-            </article>
-        )
-    }
+  render() {
+    const {tasks, deleteTask, updateTask} = this.props;
+    return (
+      <article>
+        <ul>
+          {tasks.map(task => (
+            <Task
+              key={task.id}
+              task={task}
+              deleteTask={deleteTask}
+              updateTask={updateTask}
+            />
+          ))}
+        </ul>
+      </article>
+    );
+  }
 }
 
+Tasks.propTypes = {
+  tasks: PropTypes.arrayOf(
+    PropTypes.shape(Task.propTypes)
+  ).isRequired,
+  deleteTask: PropTypes.func.isRequired,
+  updateTask: PropTypes.func.isRequired
+};
 
 export default Tasks;

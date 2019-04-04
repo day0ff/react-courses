@@ -1,46 +1,64 @@
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 
 const FILTERS = [
-    value => value,
-    value => !value.complete,
-    value => value.complete
+  value => value,
+  value => !value.complete,
+  value => value.complete
 ];
 
 class Filters extends PureComponent {
-    constructor({buttons, filter}) {
-        super();
-        this.state = {buttons, filter};
-    }
+  constructor({buttons}) {
+    super();
+    this.state = {buttons};
+  }
 
     handleClick = (event) => {
-        const buttonId = event.target.id;
-        this.setState(({buttons}) => ({
-            buttons: buttons.map(button => ({
-                ...button,
-                active: button.id === +buttonId
-            }))
-        }));
-        return this.state.filter(FILTERS[buttonId]);
-    };
+      const buttonId = event.target.id;
 
-    buttonElements = () => {
-        return this.state.buttons
-            .map(button => (
-                <button
-                    key={button.id}
-                    id={button.id}
-                    className={button.active ? 'active' : undefined}
-                    onClick={this.handleClick}
-                >
-                    {button.label}
-                </button>
-            ))
+      this.setState(({buttons}) => ({
+        buttons: buttons.map(button => ({
+          ...button,
+          active: button.id === +buttonId
+        }))
+      }));
+      const {filter} = this.props;
+
+      return filter(FILTERS[buttonId]);
     };
 
     render() {
-        return <nav>{this.buttonElements()}</nav>
+      const {buttons} = this.state;
+
+      return (
+        <nav>
+          {
+            buttons
+              .map(button => (
+                <button
+                  key={button.id}
+                  id={button.id}
+                  className={button.active ? 'active' : undefined}
+                  onClick={this.handleClick}
+                  type="button"
+                >
+                  {button.label}
+                </button>
+              ))
+          }
+        </nav>
+      );
     }
 }
 
+Filters.propTypes = {
+  buttons: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      active: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  filter: PropTypes.func.isRequired
+};
 
 export default Filters;
