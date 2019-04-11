@@ -1,0 +1,7 @@
+{
+  "name": "homework_8",
+  "version": "0.0.1",
+  "dependencies": {
+    "flatmap": "0.0.3"
+  }
+}
