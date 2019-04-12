@@ -1,12 +1,15 @@
 import React, {PureComponent} from 'react';
+import {books} from '../../data/bookList'
 
 class Book extends PureComponent {
   render() {
+    const {match} = this.props;
+    const book = match ? books.find((book) => book.id === +match.params.id) : {...this.props};
     return (
-      <div className="list-element">
-        <h1>{this.props.title}</h1>
-        <img src={this.props.img} alt={this.props.title} width="200" height="300"/>
-      </div>
+        <div className="Book">
+          <h1><span>{book.title}</span></h1>
+          <img src={book.img} alt={book.title} width="200" height="300"/>
+        </div>
     );
   }
 }

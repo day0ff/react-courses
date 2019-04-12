@@ -4,5 +4,5 @@ console.log(duplicateArgs('18', '2', '77', '2'));
 console.log(duplicateArgs('abc', 'sso', 'js', 'true', 'else', 'js'));
 
 function duplicateArgs(...arguments) {
-  return arguments.length !== [...new Set(arguments)].length;
+  return arguments.length !== new Set(arguments).size;
 }

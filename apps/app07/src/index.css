@@ -7,6 +7,162 @@ body {
     background-color: #282c34;
 }
 
-.error{
+img {
+    border-radius: 10px;
+}
+
+button {
+    margin: 5px;
+    border: 2px solid #3395bd;
+    border-radius: 5px;
+    background-color: #282c34;
+    padding: 0.5em;
+    color: #d7dce8;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: color 0.2s, background-color 0.2s;
+}
+
+button:hover {
+    cursor: pointer;
+    color: #282c34;
+    background-color: white;
+}
+
+.error {
     color: #ffa0a4;
+}
+
+.App {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    grid-gap: 10px;
+    grid-template-areas: "nav nav nav" "article article article";
+}
+
+.App header {
+    grid-area: header;
+}
+
+.App nav {
+    grid-area: nav;
+}
+
+.App footer {
+    grid-area: footer;
+}
+
+.App article {
+    grid-area: article;
+}
+
+.App aside {
+    grid-area: aside;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.App {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.App nav, .App header, .App footer, .App article, .App aside {
+    border: 2px solid #3395bd;
+    border-radius: 5px;
+    background-color: #525761;
+    padding: 1em;
+    color: white;
+}
+
+.App aside {
+    display: none;
+}
+
+.App hr {
+    border-color: #3395bd;
+}
+
+.Navigation {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.Navigation .nav {
+    margin: 5px;
+    border: 2px solid #3395bd;
+    border-radius: 5px;
+    background-color: #525761;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: color 0.2s, background-color 0.2s;
+    text-decoration: none;
+    text-transform: uppercase;
+    line-height: 50px;
+}
+
+.Navigation .nav-active{
+    cursor: pointer;
+    color: #282c34;
+    background-color: white;
+}
+
+.Navigation .nav:hover {
+    cursor: pointer;
+    color: #282c34;
+    background-color: white;
+}
+
+.Books ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(400px, auto);
+    grid-gap: 10px;
+}
+
+.Books ul ol {
+    padding: 15px;
+    width: 330px;
+    text-align: center;
+    border: 2px solid #525761;
+}
+
+.Books ul ol a {
+    text-decoration: none;
+    color: white;
+}
+
+.Books ul ol h1 {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Books ul ol:hover {
+    border: 2px solid #3395bd;
+    border-radius: 5px;
+    background-color: #282c34;
+    transition: background-color 0.2s;
+}
+
+.Book {
+    padding: 15px;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.visible{
+    display: inline;
+}
+
+.not-visible{
+    display: none;
 }
