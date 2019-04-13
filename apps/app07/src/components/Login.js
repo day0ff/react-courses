@@ -1,40 +1,16 @@
 import React, {PureComponent} from 'react';
 import {withRouter} from 'react-router-dom';
-
-const INIT = {
-  time: 3
-};
+import withRedirect, {INIT_TIME} from '../HOC/withRedirect';
 
 class Login extends PureComponent {
-  interval;
-  timer;
 
-  constructor() {
-    super();
-    this.state = {time: 0}
+  componentDidMount() {
+    this.props.setTime({time: 0});
   }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-    clearTimeout(this.timer);
-  }
-
-  seconds = () => {
-    this.setState({time: this.state.time - 1});
-  };
-
-  redirectUser = (location) => {
-    this.interval = setInterval(this.seconds, 1000);
-    this.timer = setTimeout(() => {
-      clearInterval(this.interval);
-      this.props.history.push(location);
-    }, this.state.time * 1000);
-  };
-
 
   handleLogin = () => {
-    this.setState({...INIT},()=>{
-      this.redirectUser('/');
+    this.props.setTime(INIT_TIME, () => {
+      this.props.redirectUser();
       this.props.handleLogin();
     });
   };
@@ -45,16 +21,16 @@ class Login extends PureComponent {
       <p>
         <b>You are {this.props.isLogin ? 'in the system.' : 'not in the system.'}&nbsp;</b>
         <button
-          className={!this.state.time ? 'visible' : 'not-visible'}
+          className={!this.props.time ? 'visible' : 'not-visible'}
           onClick={this.handleLogin}
         >
           {this.props.isLogin ? 'Logout?' : 'Login?'}
         </button>
       </p>
-      <p><b className={this.state.time ? 'visible' : 'not-visible'}>Redirect to "Home Page"
-        in {this.state.time} seconds.</b></p>
+      <p><b className={this.props.time ? 'visible' : 'not-visible'}>Redirect to "Home" page
+        in {this.props.time} seconds.</b></p>
     </>);
   }
 }
 
-export default withRouter(Login);
+export default withRouter(withRedirect(Login, '/'));
