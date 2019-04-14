@@ -1,3 +1,7 @@
+import {ADD_NOTE, REMOVE_NOTE} from '../actions/noteActions';
+
+const DEFAULT = 'DEFAULT';
+
 const INIT_STATE = {
   notes: [
     {
@@ -15,8 +19,8 @@ const rootReducer = (state = INIT_STATE, action) => {
 
   const literalSwitch = {
 
-    'ADD_NOTE': () => {
-      const maxId = Math.max(...state.notes.map(note => note.id));
+    [ADD_NOTE]: () => {
+      const maxId = Math.max(...state.notes.map(note => note.id), 0);
       return {
         ...state,
         notes: [...state.notes, {
@@ -26,7 +30,14 @@ const rootReducer = (state = INIT_STATE, action) => {
       };
     },
 
-    'DEFAULT': () => {
+    [REMOVE_NOTE]: () => {
+      return {
+        ...state,
+        notes: state.notes.filter(note => note.id !== action.noteId)
+      };
+    },
+
+    [DEFAULT]: () => {
       return state;
     }
 

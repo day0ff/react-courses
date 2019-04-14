@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
+import {addNote} from '../actions/noteActions';
 
 const INIT_STATE = {note: ''};
 
@@ -14,8 +15,7 @@ class MainPage extends PureComponent {
     this.setState({note: event.target.value});
   };
 
-  handleClick = (event) => {
-    event.preventDefault();
+  handleClick = () => {
     this.props.addNote(this.state.note);
     this.setState({...INIT_STATE});
   };
@@ -35,7 +35,7 @@ class MainPage extends PureComponent {
 const mapDispatchToProps = (dispatch) => {
   return {
     addNote: (note) => {
-      dispatch({type: 'ADD_NOTE', note});
+      dispatch(addNote(note));
     }
   };
 };
