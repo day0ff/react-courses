@@ -7,3 +7,6 @@
 # snapshot
 package-lock.json
 yarn.lock
+
+# logs
+npm-debug.log
